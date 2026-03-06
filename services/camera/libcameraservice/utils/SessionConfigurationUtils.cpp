@@ -642,16 +642,16 @@ binder::Status createConfiguredSurface(
         return binder::Status::ok();
     }
     if (width != streamInfo.width) {
-        std::string msg = fmt::sprintf("Camera %s:Surface width doesn't match: %d vs %d",
+        std::string msg = fmt::sprintf("Camera %s:Surface width doesn't match: %d vs %d. Bypassing for MIUI.",
                 logicalCameraId.c_str(), width, streamInfo.width);
-        ALOGE("%s: %s", __FUNCTION__, msg.c_str());
-        return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
+        ALOGW("%s: %s", __FUNCTION__, msg.c_str());
+        // return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (height != streamInfo.height) {
-        std::string msg = fmt::sprintf("Camera %s:Surface height doesn't match: %d vs %d",
+        std::string msg = fmt::sprintf("Camera %s:Surface height doesn't match: %d vs %d. Bypassing for MIUI.",
                  logicalCameraId.c_str(), height, streamInfo.height);
-        ALOGE("%s: %s", __FUNCTION__, msg.c_str());
-        return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
+        ALOGW("%s: %s", __FUNCTION__, msg.c_str());
+        // return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (format != streamInfo.format) {
         std::string msg = fmt::sprintf("Camera %s:Surface format doesn't match: %d vs %d",
